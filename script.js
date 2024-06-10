@@ -7,15 +7,8 @@ Array.prototype.myFilter = function (callback, thisArg) {
         throw new Error('Callback is not a function');
     }
 
-    let context = this;
+    let context = thisArg ?? this;
     let obj = Object(this);
-
-    if (arguments.length > 1) {
-        context = thisArg
-    }
-    if (typeof callback !== 'function') {
-        throw new Error('Callback is not a function')
-    }
 
     let len = obj.length;
     
@@ -39,14 +32,10 @@ Array.prototype.myFilter = function (callback, thisArg) {
 
 
 // console.log(arr.myFilter(function (elem, i) {
-//   console.log(this[i]);
-//   console.log(elem);
 //     return  this[i] < elem
 // }, arr2));
 
 // console.log(arr.filter(function (elem, i) {
-//   console.log(this[i]);
-//   console.log(elem);
 //     return  this[i] < elem
 // }, arr2));
 
